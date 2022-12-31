@@ -1,0 +1,10 @@
+nodemon server - if use nodemon server don't need to ctrl+c and re-run the command - node filename again and again and
+
+npm init - makes package.json
+
+package.json - dependencies will keep track of  the dep installed
+npm i - will install all the dep 
+
+{root: __dirname} - makes an absolute path
+
+view engine (ejs in this app) - is used to make the site dynamic
