@@ -38,6 +38,7 @@ const blog_create_post = (req, res) => {
     })
 }
 
+//to get the id Make sure to use req.params.id, not res.params.id
 const blog_delete = (req, res) => {
     const id = req.params.id;
 
