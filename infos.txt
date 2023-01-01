@@ -1,0 +1,65 @@
+nodemon server - if use nodemon server don't need to ctrl+c and re-run the command - node filename again and again and
+
+npm init - makes package.json
+
+package.json - dependencies will keep track of  the dep installed
+npm i - will install all the dep 
+
+{root: __dirname} - makes an absolute path
+
+view engine (ejs in this app) - is used to make the site dynamic
+
+ejs - {
+    <% all actions goes here %>
+    <%= all variables %>
+    <%- includes() %>
+}
+
+middleware - eg: app.use(.....), app.get(.....) (thing between server and app)
+
+morgan - a middleware
+
+static files - to access static files like styles.css you should save it in the public folder
+
+Express - const express = require('express') --> const app = express() --> app.set('view engine', 'ejs') --> app.listen(3000) --> app.use(express.static('public'))//never mind this --> app.get('/', (req, res) => {res.render('index')})......
+ 
+---------------------------------------------------------------------------------------------------
+
+MongoDB - stores data in collections and documents 
+
+User collection -  user document
+
+Blog collection -  Blog document
+
+Mongoose - it is an ODM library - Object Document Mapping library
+
+Schemas & Models - Schemas defines the structure of a type of data / document 
+
+mongoose.model('Blog') - this will pluralize the collection in MongoDB to look for blogs
+
+MongoDb - const mongoose = require('mongoose') --> const dbURI --> mongoose.connect(dbURI, options).then((result) => app.listen(3000)).catch((err) => {console.log(err)}) --> 
+IN MODEL --> const mongoose = require('mongoose') --> const Schema = mongoose.Schema --> BUILD SCHEMA - const blogSchema --> const Blog = mongoose.model('blog', blogSchema) --> module.exports = Blog --> module.exports
+IN APP.JS --> const Blog = require('.model/blog') --> IN THE MIDDLEWARE/MAYBE ANOTHER WAY 
+
+Request types - eg: /blogs            GET - url for both get and post can be same but the actions will be different
+                    /blogs/create     GET
+                    /blogs            POST - url for both get and post can be same but the actions will be different
+                    /blogs/:id        GET
+                    /blogs/:id        DELETE
+                    /blogs/:id        PUT
+                    
+app.use(express.urlencoded()) - this take all the url encoded data and pass into the object so we can use it in req
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Express Routes - 
+
+Route parameters - The variable parts of the route that may change value
+
+Ajax request - when we are doing Ajax request (frontend fetch) we cannot redirect eg: details script
+
+Routes -  if we need to make small chunks of route instead of piling it up in app.js, create a new folder routes of whatever it is 
+
+CONTROLLERS FOLDER --> blogController.js --> import Blog --> make blog_index, blog_create_get etc. functions --> 
+ROUTES FOLDER --> chuckRoutes.js --> import express and blogController --> const router = express.Router() --> router.get('/', ...) --> module.exports = router;
+APP.JS --> import blogRoutes --> a.use('/blogs', blogRoutes)
