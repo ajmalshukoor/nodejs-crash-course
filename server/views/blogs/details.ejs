@@ -15,7 +15,12 @@
     <%- include('../partials/footer.ejs')%>
     <script>
         const trashcan = document.querySelector('a.delete');
-
+        
+        //on click the fetch method triggers and try given url
+        //it has the options object saying delete method
+        //Now the server side look at this and find the id from the url
+        //then the server side makes this res.json({redirect: '/blogs'}) in blog_delete
+        //here the data gets the redirect and makes the window.location.href url the redirected one 
         trashcan.addEventListener('click', (e) => {
             const endpoint = `/blogs/${trashcan.dataset.doc}`;
 
